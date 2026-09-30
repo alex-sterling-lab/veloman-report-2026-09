@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Veloman · итог сентября 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0b0c10; --surface:#13151c; --surface2:#1a1d27; --border:#262a36;
+    --gold:#f0a500; --gold-dim:rgba(240,165,0,.12);
+    --white:#f5f5f0; --muted:#8a8d9b;
+    --r:12px; --r-lg:20px; --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  .hero{position:relative;padding:72px 0 36px;border-bottom:1px solid var(--border);overflow:hidden}
+  .hero-eyebrow{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,5vw,56px);line-height:1.05;letter-spacing:-.02em}
+  .hero h1 .accent{color:var(--gold)}
+  .hero-bg-word{position:absolute;right:-40px;top:30px;font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(120px,18vw,220px);color:rgba(240,165,0,.04);letter-spacing:-.04em;line-height:1;pointer-events:none;user-select:none}
+
+  /* Platform switcher (segmented control) */
+  .switcher-wrap{padding:28px 0 8px;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:10}
+  .switcher{display:inline-flex;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px;gap:4px}
+  .switcher button{appearance:none;border:0;background:transparent;color:var(--muted);font-family:'Syne',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border-radius:999px;cursor:pointer;transition:color .15s,background .15s}
+  .switcher button:hover{color:var(--white)}
+  .switcher button.active{background:var(--gold);color:#0b0c10}
+  .switcher-hint{margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+  .section{padding:56px 0;border-bottom:1px solid var(--border)}
+  .section-num{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .section h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(22px,2.8vw,30px);letter-spacing:-.01em;margin-bottom:28px}
+
+  .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:620px}
+  thead th{font-family:'Syne',sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface2);padding:14px 16px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap}
+  thead th:first-child{text-align:left;color:var(--white)}
+  thead th.total{color:var(--gold)}
+  tbody td{padding:16px;border-bottom:1px solid var(--border);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  tbody td:first-child{text-align:left;color:var(--white);font-weight:500}
+  tbody td.total{background:var(--gold-dim);color:var(--white);font-weight:600}
+  tbody tr:last-child td{border-bottom:none}
+  .row-sub{color:var(--muted);font-weight:400;font-size:12px;display:block;margin-top:2px}
+
+  .goals{padding:48px 0 64px}
+  .goals h3{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .goals ul{list-style:none;display:grid;gap:10px}
+  .goals li{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:14px;color:var(--white);display:flex;align-items:baseline;gap:14px}
+  .goals li .tag{font-family:'Syne',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);border-radius:6px;padding:3px 10px;flex-shrink:0}
+  .goals li .id{color:var(--muted);font-size:12px;margin-left:auto;font-variant-numeric:tabular-nums}
+
+  /* Work-over-account block */
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+  @media (max-width:720px){.work-grid{grid-template-columns:1fr}}
+  .work-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:24px;display:flex;flex-direction:column;gap:14px}
+  .work-card.highlight{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold-dim) inset}
+  .work-card-year{font-family:'Syne',sans-serif;font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .work-card.highlight .work-card-year{color:var(--gold)}
+  .work-card-num{font-family:'Syne',sans-serif;font-weight:800;font-size:42px;line-height:1;letter-spacing:-.02em;color:var(--white)}
+  .work-card.highlight .work-card-num{color:var(--gold)}
+  .work-card-sub{color:var(--muted);font-size:13px;margin-top:-6px}
+  .work-card img{display:block;max-width:100%;height:auto;border-radius:var(--r);border:1px solid var(--border);background:#fff;align-self:flex-start}
+
+  /* Alert banner */
+  .alert{margin-top:24px;background:rgba(220,50,50,.12);border:1px solid #dc3232;border-left:4px solid #dc3232;border-radius:var(--r);padding:18px 22px;display:flex;align-items:center;gap:14px;font-size:16px;line-height:1.4;color:#fff;font-family:'Syne',sans-serif;font-weight:600;letter-spacing:.01em;text-transform:uppercase}
+  .alert .alert-icon{flex-shrink:0;font-size:22px;color:#ff5a5a}
+
+  /* Mini-grid of screenshots inside work-card */
+  .shot-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .shot-grid figure{margin:0;display:flex;flex-direction:column;gap:4px}
+  .shot-grid img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border);background:#fff}
+  .shot-grid figcaption{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+  .work-summary{margin-top:24px;background:var(--gold-dim);border:1px solid var(--gold);border-radius:var(--r);padding:16px 20px;font-size:15px;color:var(--white);text-align:center}
+  .work-summary b{color:var(--gold);font-family:'Syne',sans-serif;font-weight:700}
+
+  .section p.lead{color:var(--muted);font-size:14px;margin-bottom:24px;max-width:780px}
+  .platform-block{padding:40px 0 0;border-top:2px solid var(--gold)}
+  .platform-block-header{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(18px,2vw,24px);letter-spacing:.04em;text-transform:uppercase;color:var(--gold);padding-bottom:16px}
+  footer{padding:28px 0 40px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-family:'Syne',sans-serif}
+  footer b{color:var(--gold);font-weight:600}
+
+  /* Platform visibility */
+  .platform{display:none}
+  .platform.active{display:block}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-bg-word">VELOMAN</div>
+  <div class="container">
+    <div class="hero-eyebrow">Veloman · veloman.by · Минск</div>
+    <h1>Итог рекламы за <span class="accent">сентябрь 2026</span></h1>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="section-num">Сводка · 17–30 сентября</div>
+    <h2>Главное за месяц</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Показатель</th><th>Яндекс.Директ</th><th class="total">Google Ads</th></tr></thead>
+      <tbody>
+        <tr><td>Расход</td><td>585,89&nbsp;BYN</td><td class="total">197,48&nbsp;USD</td></tr>
+        <tr><td>Заявки с сайта</td><td>7</td><td class="total">7</td></tr>
+        <tr><td>Клики по номеру телефона</td><td>13</td><td class="total">44</td></tr>
+        <tr><td>Переходы в мессенджеры</td><td>6</td><td class="total">3</td></tr>
+        <tr><td><b>Обращения всего</b></td><td><b>26</b></td><td class="total"><b>54</b></td></tr>
+        <tr><td>Стоимость обращения</td><td>22,53&nbsp;BYN</td><td class="total">3,66&nbsp;USD</td></tr>
+        <tr><td>Оформленных заказов</td><td>3</td><td class="total">6</td></tr>
+      </tbody></table></div>
+    <div class="table-note">
+      Реклама veloman.by стартовала в сентябре: Яндекс.Директ откручивает с 17 числа, Google Ads — с 19-го,
+      поиск в Google подключился 22-го. Данные за 30 сентября — на момент подготовки отчёта, день не закончен.
+    </div>
+  </div>
+</section>
+
+<div class="platform-block"><div class="container"><div class="platform-block-header">Яндекс.Директ</div></div></div>
+<section class="section"><div class="container">
+  <div class="section-num">Таблица 01 · 2026</div>
+  <h2>Яндекс.Директ — по неделям</h2>
+  <div class="table-wrap"><table><thead><tr><th>Показатель</th><th>14–20 сен</th><th>21–27 сен</th><th>28–30 сен</th><th class="total">Сентябрь</th></tr></thead><tbody>
+<tr><td>Расход, BYN</td><td>94,72</td><td>392,71</td><td>98,46</td><td class="total">585,89</td></tr>
+<tr><td>Показы</td><td>27&nbsp;275</td><td>92&nbsp;551</td><td>12&nbsp;515</td><td class="total">132&nbsp;341</td></tr>
+<tr><td>Клики</td><td>497</td><td>1&nbsp;521</td><td>292</td><td class="total">2&nbsp;310</td></tr>
+<tr><td>Заявки с сайта</td><td>1</td><td>3</td><td>3</td><td class="total">7</td></tr>
+<tr><td>Клики по номеру телефона</td><td>1</td><td>9</td><td>3</td><td class="total">13</td></tr>
+<tr><td>Переходы в мессенджеры</td><td>0</td><td>5</td><td>0</td><td class="total">6</td></tr>
+<tr><td><b>Обращения всего</b></td><td>2</td><td>17</td><td>6</td><td class="total">26</td></tr>
+<tr><td>Стоимость обращения, BYN</td><td>47,36</td><td>23,10</td><td>16,41</td><td class="total">22,53</td></tr>
+<tr><td>из заявок — оформленных заказов</td><td>1</td><td>1</td><td>1</td><td class="total">3</td></tr>
+</tbody></table></div>
+  <div class="table-note">
+    Первая неделя неполная — четыре рабочих дня. На полных днях цена обращения снизилась почти вдвое.
+    Оформленный заказ входит в заявки с сайта. Итог за месяц считается по месяцу целиком, а не суммой недель,
+    поэтому в отдельных строках он может отличаться на единицу.
+  </div>
+</div></section>
+
+<div class="platform-block"><div class="container"><div class="platform-block-header">Google Ads</div></div></div>
+<section class="section"><div class="container">
+  <div class="section-num">Таблица 02 · 2026</div>
+  <h2>Google Ads — по неделям</h2>
+  <div class="table-wrap"><table><thead><tr><th>Показатель</th><th>14–20 сен</th><th>21–27 сен</th><th>28–30 сен</th><th class="total">Сентябрь</th></tr></thead><tbody>
+<tr><td>Расход, USD</td><td>16,79</td><td>120,29</td><td>60,40</td><td class="total">197,48</td></tr>
+<tr><td>Показы</td><td>4&nbsp;465</td><td>40&nbsp;312</td><td>7&nbsp;682</td><td class="total">52&nbsp;459</td></tr>
+<tr><td>Клики</td><td>305</td><td>1&nbsp;206</td><td>288</td><td class="total">1&nbsp;799</td></tr>
+<tr><td>Заявки с сайта</td><td>0</td><td>7</td><td>0</td><td class="total">7</td></tr>
+<tr><td>Клики по номеру телефона</td><td>21</td><td>19</td><td>4</td><td class="total">44</td></tr>
+<tr><td>Переходы в мессенджеры</td><td>1</td><td>2</td><td>0</td><td class="total">3</td></tr>
+<tr><td><b>Обращения всего</b></td><td>22</td><td>28</td><td>4</td><td class="total">54</td></tr>
+<tr><td>Стоимость обращения, USD</td><td>0,76</td><td>4,30</td><td>15,10</td><td class="total">3,66</td></tr>
+<tr><td>из заявок — оформленных заказов</td><td>0</td><td>6</td><td>0</td><td class="total">6</td></tr>
+</tbody></table></div>
+  <div class="table-note">
+    <b>Цену 3,66 $ нельзя сравнивать с ценой заявки или продажи:</b> 44 из 54 обращений — клики по номеру
+    телефона, это верхняя часть воронки. Все 6 заказов пришли в неделе 21–27 сентября.
+    В последние три дня обращений стало заметно меньше — следим за динамикой.
+  </div>
+</div></section>
+
+<section class="goals"><div class="container">
+  <h3>Какие конверсии мы считаем</h3>
+  <ul>
+    <li><span class="tag">Обе площадки</span><span>veloman.by — Заявка с сайта</span><span class="id">Метрика 610174270</span></li>
+    <li><span class="tag">Обе площадки</span><span>veloman.by — Клик в мессенджеры</span><span class="id">Метрика 328596416</span></li>
+    <li><span class="tag">Обе площадки</span><span>veloman.by — Клик по номеру телефона</span><span class="id">Метрика 328596841</span></li>
+    <li><span class="tag">Обе площадки</span><span>veloman.by — Заказ оформлен</span><span class="id">Метрика 571479658</span></li>
+  </ul>
+  <div class="table-note">Источник конверсий — Яндекс.Метрика, счётчик veloman.by, площадка определяется по последнему рекламному источнику визита.</div>
+</div></section>
+
+<footer><div class="container">OpenClaw · <b>veloman.by</b> · Итог сентября 2026 · Минск</div></footer>
+</body>
+</html>
